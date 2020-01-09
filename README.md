@@ -4,8 +4,8 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 
 ## Introduction 
-基于ucontext.h实现简单的协程，每个协程都有各自的栈空间，缺点是比较耗内存。
-采用共享栈模式可以改进这缺点，但是会引入栈内存拷贝的一些性能开销。
+基于ucontext.h实现简单的协程，每个协程都有各自的栈空间，缺点是比较耗内存。  
+采用共享栈模式可以改进这缺点，但是会引入栈内存拷贝的一些性能开销。  
 做了简单的功能测试和上下文切换性能测试。
 
 参考博客：[ucontext-人人都可以实现的简单协程库](https://blog.csdn.net/qq910894904/article/details/41911175)
