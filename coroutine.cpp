@@ -102,11 +102,11 @@ int schedule_t::schedule_finished() const {
 void schedule_t::uthread_func(void *arg) {
     schedule_t *ps = (schedule_t*)(arg);
 	int id = ps->running_thread;
-	if(id != -1) {        
+	if(id != -1) {
 		uthread_t *puth = &ps->threads[id];
 		puth->state = RUNNING;
-        //puth->cofunc();
-        puth->task();
+		//puth->cofunc();
+		puth->task();
 		puth = &ps->threads[id]; //bugfix 没有这一句会段错误或者死循环，因为
 		//这里可能会由于threads 以2倍扩展分配新空间，导致puth指向旧的内存空间，然后swapcontext段错误
 		puth->state = FREE;

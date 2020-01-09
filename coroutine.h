@@ -64,16 +64,16 @@ struct schedule_t;
 
 struct uthread_t {
 public:
-    schedule_t *psche; //协程所属的调度器
+  schedule_t *psche; //协程所属的调度器
 	ucontext_t ctx; //协程上下文数据结构
-    Task task; //协程任务，包装用户的函数
+  Task task; //协程任务，包装用户的函数
 	enum ThreadState state; //FREE, RUNNABLE, RUNNING, SUSPEND
 	char stack[DEFAULT_STACK_SIZE]; //协程私有栈空间
 
-    //协程要执行的函数
-    void cofunc() {
-        task();
-    }   
+  //协程要执行的函数
+  void cofunc() {
+    task();
+  }   
 
 };
 
@@ -87,22 +87,22 @@ private:
 	UThread_vector threads; //协程数组
 
 public:
-	schedule_t() : running_thread(-1) {}
-    ~schedule_t() {}
+  schedule_t() : running_thread(-1) {}
+  ~schedule_t() {}
 
-    //创建协程，func是执行函数，加入协程数组中,暂时只创建不执行
-    int uthread_create(Task task);
+  //创建协程，func是执行函数，加入协程数组中,暂时只创建不执行
+  int uthread_create(Task task);
 
-    //挂起正在执行的协程，切换到main
-    void uthread_yield();
+  //挂起正在执行的协程，切换到main
+  void uthread_yield();
 
-    //恢复编号id的协程
-    void uthread_resume(int id);
+  //恢复编号id的协程
+  void uthread_resume(int id);
 
-    //判断所有协程是否执行完毕
-    int schedule_finished() const;
+  //判断所有协程是否执行完毕
+  int schedule_finished() const;
 
-    //协程函数入口
-    static void uthread_func(void *arg);
+  //协程函数入口
+  static void uthread_func(void *arg);
 
 };
