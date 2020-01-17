@@ -135,7 +135,7 @@ void coroutine_performance_test() {
 	end = clock();
 	printf("total %d times context switch\ntake Time：%lf ms\navg time: %lf us\n", 
 		times*1000000, 
-		(double)(end - start)/CLOCKS_PER_SEC,
+		(double)(end - start)/1000,
 		(double)(end - start)/(times*1000));
 }
 
